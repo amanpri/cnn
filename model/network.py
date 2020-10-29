@@ -58,6 +58,9 @@ class Net:
                     for l in range(self.lay_num-1, -1, -1):
                         dout = self.layers[l].backward(dy)
                         dy = dout
+                        #print("dy",dy)
+                        print(dout,"dout")
+                '''        
                 # time
                 end_time = time()
                 batch_time = end_time-start_time
@@ -65,10 +68,14 @@ class Net:
                 hrs = int(remain_time)/3600
                 mins = int((remain_time/60-hrs*60))
                 secs = int(remain_time-mins*60-hrs*3600)
+                '''
                 # result
                 loss /= batch_size
+                #print("loss" ,loss)
                 batch_acc = float(acc)/float(batch_size)
+                #print(batch_acc,"batch_acc")
                 training_acc = float(total_acc)/float((batch_index+batch_size)*(e+1))
+                #print(training_acc,"accuracy")
                 #print('=== Epoch: {0:d}/{1:d} === Iter:{2:d} === Loss: {3:.2f} === BAcc: {4:.2f} === TAcc: {5:.2f} === Remain: {6:d} Hrs {7:d} Mins {8:d} Secs ==='.format(e,epoch,batch_index+batch_size,loss,batch_acc,training_acc,int(hrs),int(mins),int(secs)))
         # dump weights and bias
         obj = []
